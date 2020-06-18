@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Dishes";
+}
+@model List<Dish>
+
+<partial name="NavPartial"/>
+
+<h3 class="py-3">
+  Dishes <a href="/dish/add/0">+</a>
+</h3>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Chef</th>
+      <th scope="col">Tastiness</th>
+      <th scope="col">Calories</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var dish in Model)
+    {
+      <tr>
+        <th scope="row">@dish.DishID</th>
+        <td>@dish.Name</td>
+        <td>@dish.Owner.FirstName @dish.Owner.LastName</td>
+        <td>@dish.Tastiness</td>
+        <td>@dish.Calories</td>
+      </tr>
+    }
+  </tbody>
+</table>

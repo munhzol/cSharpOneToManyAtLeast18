@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Chef>
+@functions  
+{  
+   // Here will be C# method  
+   public int CalcAge(DateTime dateOfBirth) 
+        { 
+            int age = 0;
+            age = DateTime.Now.Year - dateOfBirth.Year;
+            if (DateTime.Now.DayOfYear < dateOfBirth.DayOfYear) 
+            age = age - 1;
+            return age;
+        }
+}  
+<partial name="NavPartial"/>
+
+<h3 class="py-3">
+  Chefs <a href="/chef/add/0">+</a>
+</h3>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col"># of Dishes</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var chef in Model)
+    {
+      <tr>
+        <th scope="row">@chef.ChefID</th>
+        <td>@chef.FirstName @chef.LastName</td>
+        <td>@CalcAge(@chef.Birthday)</td>
+        <td>
+          @chef.OwnedDishes.Count
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

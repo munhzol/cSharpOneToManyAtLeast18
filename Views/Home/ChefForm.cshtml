@@ -1,0 +1,31 @@
+@model Chef
+<partial name="NavPartial"/>
+
+<h3 class="py-3">
+  Add or Edit A Chef <a href="/"><-</a>
+</h3>
+
+
+<form action="/chef/save/@Model.ChefID" method="post">
+
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control">
+        <span class="text-danger" asp-validation-for="FirstName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control">
+        <span class="text-danger" asp-validation-for="LastName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Birthday"></label>
+        <input asp-for="Birthday" class="form-control">
+        <span class="text-danger" asp-validation-for="Birthday"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a class="btn btn-outline-secondary" href="/">Cancel</a>
+</form>
